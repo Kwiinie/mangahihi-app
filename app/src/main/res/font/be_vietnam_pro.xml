@@ -1,0 +1,21 @@
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="300"
+        android:font="@font/be_vietnam_pro_light" />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/be_vietnam_pro_regular" />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        android:font="@font/be_vietnam_pro_medium" />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/be_vietnam_pro_bold" />
+</font-family>

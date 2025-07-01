@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Sizes -->
+    <dimen name="text_size_large">28sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_subtitle">16sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_tiny">10sp</dimen>
+
+    <!-- Margins and Padding -->
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_tiny">8dp</dimen>
+    <dimen name="margin_micro">4dp</dimen>
+
+    <!-- Corner Radius -->
+    <dimen name="corner_radius_large">24dp</dimen>
+    <dimen name="corner_radius_medium">16dp</dimen>
+    <dimen name="corner_radius_small">12dp</dimen>
+    <dimen name="corner_radius_tiny">8dp</dimen>
+
+    <!-- Card Elevations -->
+    <dimen name="elevation_large">8dp</dimen>
+    <dimen name="elevation_medium">4dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
+
+    <!-- Component Sizes -->
+    <dimen name="bottom_nav_height">80dp</dimen>
+    <dimen name="comic_card_width">120dp</dimen>
+    <dimen name="comic_card_height">160dp</dimen>
+    <dimen name="genre_chip_height">40dp</dimen>
+
+    <!-- Indicators -->
+    <dimen name="indicator_size">8dp</dimen>
+    <dimen name="indicator_active_width">24dp</dimen>
+    <dimen name="indicator_margin">4dp</dimen>
+
+    <!-- Icon Sizes -->
+    <dimen name="icon_size_large">32dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_small">20dp</dimen>
+    <dimen name="icon_size_tiny">16dp</dimen>
+</resources>

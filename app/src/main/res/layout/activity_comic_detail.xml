@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.comic.ComicDetailActivity">
+
+    <!-- Main Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Hero Section with Cover -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@drawable/bg_hero_gradient">
+
+                <!-- Background Blur Effect -->
+                <ImageView
+                    android:id="@+id/img_background_blur"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:src="@drawable/sample_manga_cover" />
+
+                <!-- Top Bar -->
+                <LinearLayout
+                    android:id="@+id/top_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:id="@+id/btn_back"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_circle_button_white"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_arrow_back" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/btn_favorite"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_circle_button_white"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_favorite_outline" />
+
+                </LinearLayout>
+
+                <!-- Cover and Title -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/top_bar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <!-- Cover Image -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="8dp">
+
+                        <ImageView
+                            android:id="@+id/img_cover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/sample_manga_cover" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Title and Basic Info -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="20dp">
+
+                        <!-- Title -->
+                        <TextView
+                            android:id="@+id/txt_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Comic Title"
+                            android:textSize="20sp"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/be_vietnam_pro_bold"
+                            android:lineSpacingExtra="2dp"
+                            android:layout_marginBottom="8dp"
+                            android:shadowColor="#80000000"
+                            android:shadowRadius="4"
+                            android:maxLines="3"
+                            android:ellipsize="end"
+                            tools:text="Your Majesty, Please Stop Now" />
+
+                        <!-- Author -->
+                        <TextView
+                            android:id="@+id/txt_author"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Author Name"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_primary"
+                            android:fontFamily="@font/be_vietnam_pro_medium"
+                            android:layout_marginBottom="12dp"
+                            android:shadowColor="#80000000"
+                            android:shadowRadius="4"
+                            tools:text="Tác giả" />
+
+                        <!-- Tags -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:id="@+id/txt_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MANHWA"
+                                android:textSize="11sp"
+                                android:textColor="@android:color/white"
+                                android:fontFamily="@font/be_vietnam_pro_bold"
+                                android:background="@drawable/bg_tag_type"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="6dp"
+                                android:layout_marginEnd="8dp"
+                                tools:text="MANHWA" />
+
+                            <TextView
+                                android:id="@+id/txt_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ONGOING"
+                                android:textSize="11sp"
+                                android:textColor="@android:color/white"
+                                android:fontFamily="@font/be_vietnam_pro_bold"
+                                android:background="@drawable/bg_tag_status"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="6dp"
+                                tools:text="ONGOING" />
+
+                        </LinearLayout>
+
+                        <!-- Stats Row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/bg_stats_item"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp"
+                                android:layout_marginEnd="12dp">
+
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@drawable/ic_eye"
+                                    app:tint="@android:color/white"
+                                    android:layout_marginEnd="6dp" />
+
+                                <TextView
+                                    android:id="@+id/txt_views"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="125K"
+                                    android:textSize="12sp"
+                                    android:textColor="@android:color/white"
+                                    android:fontFamily="@font/be_vietnam_pro_medium"
+                                    tools:text="125K" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/bg_stats_item"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp">
+
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@drawable/ic_book"
+                                    app:tint="@android:color/white"
+                                    android:layout_marginEnd="6dp" />
+
+                                <TextView
+                                    android:id="@+id/txt_chapter_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="32"
+                                    android:textSize="12sp"
+                                    android:textColor="@android:color/white"
+                                    android:fontFamily="@font/be_vietnam_pro_medium"
+                                    tools:text="32" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:layout_marginTop="-10dp">
+
+                <TextView
+                    android:id="@+id/btn_start_reading"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="Bắt đầu đọc"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:textSize="15sp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/btn_pink_primary"
+                    android:gravity="center"
+                    android:elevation="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/btn_continue_reading"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="Tiếp tục đọc"
+                    android:textColor="#E91E63"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:textSize="15sp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_pink_outline"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="#E91E63" />
+
+            </LinearLayout>
+
+            <!-- Description Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="0dp"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mô tả"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <TextView
+                        android:id="@+id/txt_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Comic description goes here..."
+                        android:textSize="15sp"
+                        android:textColor="@color/text_secondary"
+                        android:fontFamily="@font/be_vietnam_pro_regular"
+                        android:lineSpacingExtra="4dp"
+                        android:layout_marginBottom="8dp"
+                        tools:text="Sharan là một nô lệ ngoại giáo ở Đế chế Valdek. Cô sống một cuộc sống khốn khổ dưới sự tra tấn của gia đình chủ nhân..." />
+
+                    <TextView
+                        android:id="@+id/btn_toggle_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Show More"
+                        android:textSize="14sp"
+                        android:textColor="@color/accent_pink"
+                        android:fontFamily="@font/be_vietnam_pro_medium"
+                        android:background="@drawable/ripple_effect"
+                        android:padding="8dp"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Genres Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:paddingTop="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thể loại"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:layout_marginBottom="12dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_genres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingVertical="4dp"
+                    tools:listitem="@layout/item_genre_tag" />
+
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color"
+                android:layout_marginHorizontal="20dp" />
+
+            <!-- Chapters Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chapters"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="@font/be_vietnam_pro_bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_chapter_count"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            app:tint="@color/accent_pink"
+                            android:layout_marginEnd="6dp" />
+
+                        <TextView
+                            android:id="@+id/txt_chapter_count_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="32 chapters"
+                            android:textSize="13sp"
+                            android:textColor="@color/accent_pink"
+                            android:fontFamily="@font/be_vietnam_pro_medium"
+                            tools:text="32 chapters" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_chapters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="500dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_chapter" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Loading Layout -->
+    <LinearLayout
+        android:id="@+id/layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/background_primary"
+        android:visibility="gone"
+        android:padding="32dp">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:indeterminate="true"
+            app:indicatorColor="@color/accent_pink"
+            app:trackColor="@color/surface_variant"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đang tải truyện..."
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/be_vietnam_pro_medium"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chờ xíu nha"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:fontFamily="@font/be_vietnam_pro_regular" />
+
+    </LinearLayout>
+
+    <!-- Error Layout -->
+    <LinearLayout
+        android:id="@+id/layout_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/background_primary"
+        android:visibility="gone"
+        android:padding="32dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_error_outline"
+            app:tint="@color/text_tertiary"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tải truyện lỗi"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kiểm tra kết nối mạng và thử lại"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:fontFamily="@font/be_vietnam_pro_regular"
+            android:textAlignment="center"
+            android:layout_marginBottom="32dp"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:text="Tải lại"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:paddingHorizontal="32dp"
+            android:background="@drawable/btn_pink_primary"
+            android:gravity="center"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

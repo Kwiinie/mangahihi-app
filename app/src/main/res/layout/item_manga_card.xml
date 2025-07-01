@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@android:color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Cover Image -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:layout_margin="3dp">
+
+            <ImageView
+                android:id="@+id/manga_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:background="@drawable/comic_cover_placeholder"
+                tools:src="@drawable/sample_manga_cover" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Manga Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:paddingTop="0dp">
+
+            <!-- Comic Type Label -->
+            <TextView
+                android:id="@+id/manga_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MANGA"
+                android:textSize="9sp"
+                android:textColor="@color/text_tertiary"
+                android:fontFamily="@font/be_vietnam_pro_medium"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="2dp"
+                tools:text="MANGA" />
+
+            <!-- Manga Title (Always 2 lines) -->
+            <TextView
+                android:id="@+id/manga_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Manga Title"
+                android:textSize="12sp"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:lines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="1dp"
+                android:layout_marginBottom="4dp"
+                tools:text="Demon Slayer: Kimetsu no Yaiba" />
+
+            <!-- Chapter Info (Always 2 lines) -->
+            <TextView
+                android:id="@+id/manga_chapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ch. 205"
+                android:textSize="10sp"
+                android:textColor="@color/gradient_primary"
+                android:fontFamily="@font/be_vietnam_pro_medium"
+                android:lines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="1dp"
+                android:layout_marginBottom="4dp"
+                tools:text="Ch. 205" />
+
+            <!-- Views and Time -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/manga_views"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2.5M views"
+                    android:textSize="9sp"
+                    android:textColor="@color/text_tertiary"
+                    android:fontFamily="@font/be_vietnam_pro_regular"
+                    tools:text="2.5M views" />
+
+                <TextView
+                    android:id="@+id/manga_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2h ago"
+                    android:textSize="9sp"
+                    android:textColor="@color/accent_green"
+                    android:fontFamily="@font/be_vietnam_pro_regular"
+                    android:visibility="gone"
+                    tools:text="2h ago"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
