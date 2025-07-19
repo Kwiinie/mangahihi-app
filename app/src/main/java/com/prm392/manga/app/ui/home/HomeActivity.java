@@ -25,6 +25,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.prm392.manga.app.ui.auth.LoginActivity;
+import android.widget.ImageButton;
+import android.content.SharedPreferences;
+
 public class HomeActivity extends AppCompatActivity implements HomeContract.View {
 
     private ViewPager2 comicTypeViewPager;
