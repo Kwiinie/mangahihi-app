@@ -60,12 +60,16 @@
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="@color/gradient_primary">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                        <ImageButton
+                            android:id="@+id/btn_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_user"
-                            app:tint="@android:color/white" />
+                            android:scaleType="centerInside"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/ic_launcher_foreground"
+                            app:tint="@android:color/white"
+                            android:contentDescription="Profile" />
 
                     </androidx.cardview.widget.CardView>
 

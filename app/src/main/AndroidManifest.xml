@@ -46,6 +46,8 @@
             android:name=".ui.chapter.ChapterActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.auth.LoginActivity"/>
+        <activity android:name=".ui.auth.RegisterActivity"/>
     </application>
 
 </manifest>

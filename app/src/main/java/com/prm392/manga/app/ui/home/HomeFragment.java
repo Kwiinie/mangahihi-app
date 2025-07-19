@@ -10,20 +10,27 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.widget.Toast;
+import android.widget.ImageButton;
+import android.content.SharedPreferences;
+import android.content.Context;
 
 import com.prm392.manga.app.R;
 import com.prm392.manga.app.data.model.Comic;
 import com.prm392.manga.app.data.model.Genre;
+import com.prm392.manga.app.ui.auth.LoginActivity;
 import com.prm392.manga.app.ui.comic.ComicDetailActivity;
 import com.prm392.manga.app.ui.home.adapter.ComicAdapter;
 import com.prm392.manga.app.ui.home.adapter.ComicTypeAdapter;
 import com.prm392.manga.app.ui.home.adapter.GenreAdapter;
-
+import com.prm392.manga.app.ui.profile.ProfileFragment;
+import com.prm392.manga.app.data.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,9 +47,34 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
     private HomeContract.Presenter presenter;
 
+    private boolean isLoggedIn = false;
+    private ImageButton btnProfile;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        btnProfile = view.findViewById(R.id.btn_profile);
+        btnProfile.setOnClickListener(v -> {
+            // Không kiểm tra gì cả
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, new ProfileFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
+        });
+
+
+        return view;
+    }
+    private void checkLoginStatus() {
+        SharedPreferences prefs = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+        String token = prefs.getString("auth_token", null);
+        isLoggedIn = token != null && !token.isEmpty();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkLoginStatus(); // mỗi lần quay lại đều check lại
     }
 
     @Override
