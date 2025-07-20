@@ -52,6 +52,7 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
     private Comic currentComic;
     private boolean isFavorite = false;
     private boolean isDescriptionExpanded = false;
+    private int comicId ;
 
     public static Intent getStartIntent(Context context, int comicId) {
         Intent intent = new Intent(context, ComicDetailActivity.class);
@@ -70,11 +71,17 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comic_detail);
 
+//        currentComic = (Comic) getIntent().getSerializableExtra("comic");
+//        if (currentComic != null) {
+//            comicId = currentComic.getId(); // ✅ Gán ID truyện vào biến
+//        }
+
         initViews();
         setupRecyclerViews();
         setupClickListeners();
 
         presenter = new ComicDetailPresenter(this);
+
 
         if (getIntent() != null) {
             if (getIntent().hasExtra(EXTRA_COMIC)) {
@@ -85,7 +92,7 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
                     presenter.loadComicDetail(comic.getId());
                 }
             } else if (getIntent().hasExtra(EXTRA_COMIC_ID)) {
-                int comicId = getIntent().getIntExtra(EXTRA_COMIC_ID, -1);
+                comicId = getIntent().getIntExtra(EXTRA_COMIC_ID, -1); // ✅ gán đúng vào biến toàn cục
                 if (comicId != -1) {
                     presenter.loadComicDetail(comicId);
                 }
@@ -138,7 +145,11 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
         btnBack.setOnClickListener(v -> onBackPressed());
 
         btnFavorite.setOnClickListener(v -> {
-
+            if (isFavorite) {
+                presenter.removeFromFavorites(comicId);
+            } else {
+                presenter.addToFavorites(comicId);
+            }
         });
 
         btnToggleDescription.setOnClickListener(v -> toggleDescription());
@@ -242,7 +253,7 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
         startActivity(intent);
     }
 
-        private void onChapterClick(Chapter chapter) {
+    private void onChapterClick(Chapter chapter) {
         startReading(chapter);
     }
 
@@ -273,6 +284,7 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
         if (comic.getChapters() != null && !comic.getChapters().isEmpty()) {
             chapterAdapter.updateChapters(comic.getChapters());
         }
+        presenter.checkIsFavorite(comic.getId());
 
         hideLoading();
     }
@@ -288,5 +300,28 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
         if (presenter != null) {
             presenter.onDestroy();
         }
+    }
+    @Override
+    public void setIsFavorite(boolean isFavorite) {
+        this.isFavorite = isFavorite;
+    }
+
+    @Override
+    public void setFavoriteIcon(boolean isFavorite) {
+        btnFavorite.setImageResource(
+                isFavorite ? R.drawable.ic_heart : R.drawable.ic_favorite_outline
+        );
+    }
+    @Override
+    public void updateFavoriteStatus(boolean added) {
+        if (added) {
+            btnFavorite.setImageResource(R.drawable.ic_heart); // trạng thái đã yêu thích
+        } else {
+            btnFavorite.setImageResource(R.drawable.ic_favorite_outline); // chưa yêu thích
+        }
+    }
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

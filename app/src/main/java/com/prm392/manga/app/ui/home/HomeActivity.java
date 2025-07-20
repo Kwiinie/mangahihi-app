@@ -1,8 +1,10 @@
 package com.prm392.manga.app.ui.home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.prm392.manga.app.R;
 import com.prm392.manga.app.data.model.Comic;
 import com.prm392.manga.app.data.model.Genre;
+import com.prm392.manga.app.ui.auth.LoginActivity;
 import com.prm392.manga.app.ui.comic.ComicDetailActivity;
 import com.prm392.manga.app.ui.comic.ComicListActivity;
 import com.prm392.manga.app.ui.home.adapter.ComicTypeAdapter;
@@ -24,10 +27,6 @@ import com.prm392.manga.app.ui.home.adapter.ComicAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.prm392.manga.app.ui.auth.LoginActivity;
-import android.widget.ImageButton;
-import android.content.SharedPreferences;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View {
 
