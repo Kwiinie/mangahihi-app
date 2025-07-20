@@ -278,13 +278,14 @@ public class ComicDetailActivity extends AppCompatActivity implements ComicDetai
     @Override
     public void showComicDetail(Comic comic) {
         currentComic = comic;
+        comicId = getIntent().getIntExtra(EXTRA_COMIC_ID, -1);
         displayBasicComicInfo(comic);
 
         // Update chapters
         if (comic.getChapters() != null && !comic.getChapters().isEmpty()) {
             chapterAdapter.updateChapters(comic.getChapters());
         }
-        presenter.checkIsFavorite(comic.getId());
+        presenter.checkIsFavorite(comicId);
 
         hideLoading();
     }
