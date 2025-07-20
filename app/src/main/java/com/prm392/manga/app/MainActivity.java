@@ -1,5 +1,7 @@
 package com.prm392.manga.app;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -10,14 +12,18 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.prm392.manga.app.ui.auth.LoginActivity;
 import com.prm392.manga.app.ui.favorite.FavoriteFragment;
 import com.prm392.manga.app.ui.history.HistoryFragment;
 import com.prm392.manga.app.ui.home.HomeFragment;
@@ -42,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Load Home fragment by default
         loadFragment(new HomeFragment(), 0);
+
+
     }
+
 
     private void initViews() {
         navHome = findViewById(R.id.nav_home);
@@ -64,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupClickListeners() {
         navHome.setOnClickListener(v -> loadFragment(new HomeFragment(), 0));
 //        navSearch.setOnClickListener(v -> loadFragment(new SearchFragment(), 1));
-//        navFavorite.setOnClickListener(v -> loadFragment(new FavoriteFragment(), 2));
+        navFavorite.setOnClickListener(v -> loadFragment(new FavoriteFragment(), 2));
 //        navHistory.setOnClickListener(v -> loadFragment(new HistoryFragment(), 3));
     }
 
